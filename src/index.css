@@ -76,10 +76,6 @@
 @layer components {
   .textField__input {
     @apply w-full py-3 px-4 rounded-xl text-secondary-900 border border-secondary-100 bg-secondary-100 hover:border-primary-500 focus:border-primary-500 focus:bg-secondary-0 transition-all duration-300 ease-out focus:shadow-lg focus:shadow-primary-200 dark:focus:shadow-secondary-200;
-
-    /* @apply w-full
-     py-3 
-     px-4 rounded-xl text-secondary-900 border border-secondary-100 bg-secondary-100 hover:border-primary-500 focus:border-primary-500 focus:bg-secondary-0 transition-all duration-300 ease-out focus:shadow-lg focus:shadow-primary-200 dark:focus:shadow-secondary-200; */
   }
   .gradient__effect {
     @apply bg-gradient-to-r from-blue-500/70 p-2 rounded-xl to-fuchsia-400/60;
@@ -192,4 +188,32 @@ table td {
   color: rgb(var(--color-secondary-600));
 }
 
-/*  react tag input */
+.header-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(
+    90deg,
+    rgba(155, 93, 229, 0.5) 0%,
+    rgba(241, 91, 181, 0.5) 50%,
+    rgba(0, 187, 249, 0.5) 100%
+  );
+  filter: blur(80px);
+  z-index: 1;
+}
+.fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
