@@ -9,11 +9,12 @@ import { TbEdit } from "react-icons/tb";
 import Loading from "../../ui/Loading";
 import { MdEditDocument, MdEditNote } from "react-icons/md";
 
-const RESEND_TIME = 90;
+const RESEND_TIME = 30;
 
 function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, otpResponse }) {
   const [otp, setOtp] = useState("");
   const [time, setTime] = useState(RESEND_TIME);
+  const [restartTimer, setRestartTimer] = useState(false);
 
   const navigate = useNavigate();
   const { isPending, mutateAsync } = useMutation({
@@ -38,14 +39,21 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, otpResponse }) {
       toast.error(error?.response?.data?.message);
     }
   };
+  const handleReSend = async () => {
+    await onReSendOtp(); // ارسال مجدد کد
+    setTime(RESEND_TIME); // تایمر ریست می‌شود
+    setRestartTimer((r) => !r); // useEffect دوباره اجرا می‌شود
+  };
 
   useEffect(() => {
-    const timer = time > 0 && setInterval(() => setTime((t) => t - 1), 1000);
-
+    if (time <= 0) return;
+    const timer = setInterval(() => {
+      setTime((t) => t - 1);
+    }, 1000);
     return () => {
       if (timer) clearInterval(timer);
     };
-  }, [time]);
+  }, [restartTimer]);
 
   return (
     <div>
@@ -76,8 +84,8 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, otpResponse }) {
           renderInput={(props) => <input type="number" {...props} />}
           containerStyle="flex flex-row-reverse gap-x-1 justify-center"
           inputStyle={{
-            width: "2.5rem",
-            padding: "0.7rem 0.3rem",
+            width: "2.1rem",
+            padding: "0.3rem 0.3rem",
             border: "1px solid rgb(var(--color-secondary-400))",
             borderRadius: "0.6rem",
             backgroundColor: "transparent",
@@ -86,11 +94,11 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, otpResponse }) {
         />
         <div>
           <div className="mb-4 flex justify-center items-center text-sm text-secondary-500">
-            {/* {time > 0 ? (
+            {time > 0 ? (
               <p> {time} ثانیه تا ارسال مجدد کد</p>
             ) : (
-              <button onClick={onReSendOtp}>ارسال مجدد کد تایید</button>
-            )} */}
+              <button onClick={handleReSend}>ارسال مجدد کد تایید</button>
+            )}
           </div>
           {isPending ? (
             <Loading />

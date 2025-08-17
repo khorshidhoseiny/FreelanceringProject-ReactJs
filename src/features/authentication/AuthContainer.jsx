@@ -50,7 +50,7 @@ function AuthContainer() {
       case 2:
         return (
           <CheckOTPForm
-            onReSendOtp={sendOtpHandler}
+            onReSendOtp={handleSubmit(sendOtpHandler)}
             phoneNumber={getValues("phoneNumber")}
             onBack={() => setStep((s) => s - 1)}
             otpResponse={otpResponse}

@@ -19,7 +19,7 @@ import ProtectedRoute from "./ui/ProtectedRoute";
 import AdminLayout from "./features/admin/AdminLayout";
 import AdminDashboard from "./pages/AdminDashboard";
 import Users from "./pages/Users";
-import { DarkModeProvider2 } from "./context/DarkmodeContext2";
+
 
 const queryClient = new QueryClient();
 

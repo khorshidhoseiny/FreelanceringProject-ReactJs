@@ -42,8 +42,8 @@ function Home() {
         <div className="header-gradient"></div>
         <main className="relative z-10">
           <div className="container flex-col flex min-h-screen items-center justify-center relative xl:max-w-screen-xl">
-            <h1 className="text-2xl fade-in md:text-3xl  justify-center flex  text-secondary-700 font-semibold">
-              <span className="bg-gradient-to-r from-blue-500  to-fuchsia-400 inline-block text-transparent bg-clip-text">
+            <h1 className="text-2xl fade-in text-center md:text-3xl text-secondary-700 font-semibold">
+              <span className="bg-gradient-to-r  from-blue-500 inline to-fuchsia-400  text-transparent bg-clip-text">
                 مرکوری&nbsp;
               </span>
               اپلیکیشنی پیشرفته برای فریلنسرینگ
@@ -52,7 +52,7 @@ function Home() {
             {!user && (
               <Link to={"/auth"}>
                 <button
-                  className="text-secondary-100 mt-7 bg-gradient-to-r
+                  className="text-secondary-100  mt-7 bg-gradient-to-r
          from-blue-500/60 to-fuchsia-400/60 transition-all duration-500 ease-in-out hover:brightness-110
          p-2 px-3 rounded-xl"
                 >
@@ -65,7 +65,7 @@ function Home() {
                 !user && "hidden"
               } items-center mt-9 gap-x-4`}
             >
-              <h1 className="flex text-secondary-700">
+              <h1 className="flex flex-col sm:flex-row text-secondary-700">
                 وضعیت شما :&nbsp;
                 <p className={`${statusStyle[user?.status]?.className}`}>
                   {statusStyle[user?.status]?.label}
@@ -73,23 +73,26 @@ function Home() {
               </h1>
               <h1 className="flex justify-center items-center text-secondary-700">
                 نقش شما:&nbsp;{" "}
-                <p className="bg-primary-400 rounded-full p-2">
+                <p className="bg-primary-700 text-xs rounded-full p-2">
                   {rolesTranslator[user?.role]}
                 </p>
               </h1>
             </div>
-            <div className="flex mt-10 justify-center items-center gap-6">
+            <div className="flex mt-10 flex-col sm:flex-row justify-center items-center gap-6">
               {user?.status === 1 ? (
                 <p>پروفایل شما در انتظار تایید مدیر است لطفا صبور باشید ...</p>
               ) : user?.status === 2 ? (
                 <>
                   <button
-                    className="gradient__effect btn p-3 text-secondary-0"
+                    className="gradient__effect btn w-full whitespace-nowrap text-xs p-3 text-secondary-900"
                     onClick={() => navigatorHandler(user?.role)}
                   >
                     رفتن به صفحه دشبورد
                   </button>
-                  <button className="btn p-3 btn--outline" onClick={logout}>
+                  <button
+                    className="btn p-3 w-full hover:bg-primary-700/30 hover:border-none text-xs btn--outline"
+                    onClick={logout}
+                  >
                     خروج از حساب کاربری
                   </button>
                 </>

@@ -8,19 +8,16 @@ const colors = {
 
 function Stat({ icon, value, title, color }) {
   return (
-    <div className="col-span-1 grid grid-rows-2 grid-cols-[6.4rem_1fr] bg-secondary-0 p-4 rounded-lg gap-x-4">
+    <div className="col-span-1 grid grid-cols-1 sm:grid-cols-[6.4rem_1fr] grid-rows-[auto_auto_auto] bg-secondary-0 p-4 rounded-lg gap-x-4 gap-y-2">
       <div
-        className={`row-span-2 flex items-center justify-center
-       p-2 aspect-square rounded-full
-       ${colors[color]}
-  `}
+        className={`flex items-center justify-center p-2 aspect-square rounded-full ${colors[color]} w-14 h-14 sm:w-16 sm:h-16`}
       >
         {icon}
       </div>
-      <h5 className="font-bold text-secondary-500 text-lg md:text-base self-center">
+      <h5 className="font-bold text-secondary-500 text-base  self-center">
         {title}
       </h5>
-      <p className="text-3xl font-bold text-secondary-900">
+      <p className="text-2xl md:text-3xl font-bold text-secondary-900">
         {toPersianNumbers(value)}
       </p>
     </div>

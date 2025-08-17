@@ -6,7 +6,7 @@ function HeaderMenu() {
   return (
     <div>
       <ul
-        className=" px-6 md:flex gap-x-3 hidden 
+        className=" px-6 flex gap-x-3  
       text-secondary-700 items-center"
       >
         <li className="flex">

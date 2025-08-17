@@ -7,10 +7,10 @@ function Header() {
   const navigate = useNavigate();
   const { user } = useUser();
   return (
-    <div className="bg-secondary-0 container xl:max-w-screen-xl  py-4 px-8 border-b border-secondary-200">
+    <div className="bg-secondary-0 container xl:max-w-screen-xl py-4 md:px-8 px-3  border-b border-secondary-200">
       <div className="w-full mx-auto">
-        <nav className=" flex items-center justify-between gap-x-8">
-          <div className="items-center flex justify-between gap-x-2">
+        <nav className="flex items-center sm:justify-between justify-center">
+          <div className="items-center relative flex justify-between gap-x-2">
             {user ? (
               <UserAvatar />
             ) : (
@@ -26,8 +26,8 @@ function Header() {
             )}
             <HeaderMenu />
           </div>
-          <button onClick={() => navigate("/")}>
-            <img src="/Mercury-Logo.png" alt="logo" className="w-24 md:w-36" />
+          <button className="hidden sm:block " onClick={() => navigate("/")}>
+            <img src="/Mercury-Logo.png" alt="logo" className="w-24  md:w-36" />
           </button>
         </nav>
       </div>

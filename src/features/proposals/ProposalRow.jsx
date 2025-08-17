@@ -26,7 +26,7 @@ function ProposalRow({ proposal, index }) {
   return (
     <Table.Row>
       <td>{index + 1}</td>
-      <td>{truncateText(description, 60)}</td>
+      <td>{truncateText(description, 30)}</td>
       <td> {toPersianNumbers(duration)} روز</td>
       <td>{toPersianNumbersWithComma(price)}</td>
       <td>

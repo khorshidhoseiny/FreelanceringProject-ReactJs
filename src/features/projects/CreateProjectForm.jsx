@@ -121,7 +121,12 @@ function CreateProjectForm({ onClose, projectToEdit = {} }) {
       />
       <div>
         <label className="mb-2 block text-secondary-700">تگ</label>
-        <TagsInput value={tags} onChange={setTags} name="tags" />
+        <TagsInput
+          classNames="my-custom-tag-input"
+          value={tags}
+          onChange={setTags}
+          name="tags"
+        />
       </div>
       <DatePickerField date={date} setDate={setDate} label="ددلاین" />
       <div className="!mt-8">
